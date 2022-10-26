@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './CardList/Card';
+import Pagination from './Pagination/Pagination';
 
 SidebarMain.propTypes = {
     
@@ -13,7 +14,15 @@ function SidebarMain(props) {
            <Card></Card>
            <Card></Card>
            <Card></Card>
-          
+           <Card></Card>
+           <Card></Card>
+           <Card></Card>
+           <Card></Card>
+           <Card></Card>
+           <Card></Card>
+           <Card></Card>
+           
+          <Pagination></Pagination>
         </div>
     );
 }

@@ -18,7 +18,7 @@ function Card(props) {
                 <p>This is a task, This is a task, This is a task,...</p>
             </div>
             <div className="card__btn">
-                <button>New</button>
+                <button>New <i class="fa-solid fa-chevron-down"></i></button>
             </div>
         </div>
     );

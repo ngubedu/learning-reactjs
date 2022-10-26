@@ -75,24 +75,31 @@ body {
 .container {
     display: flex;
     background: #F5F5F5;
-    width: 100%;
+
 }
 
 .sidebar__main {
+
     display: flex;
-    overflow: auto;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-content: flex-start;
+    gap: .3rem;
+    overflow: auto;
+
 }
 
 .card {
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
+    /* max-height: 200px; */
     border: 2px solid #675BF1;
     padding: .5rem;
     border-radius: 5px;
-    margin: .5rem;
+    margin: 0 auto;
+    margin-top: .4rem;
     background: #fff;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .card .card__infor {
@@ -109,9 +116,19 @@ body {
 }
 
 .card .card__btn button {
-    padding: 5px 40px;
+    padding: 5px 30px;
     background: none;
     border: 1px solid #675BF1;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+}
+
+.card .card__btn button i {
+    color: #675BF1;
+    padding-left: 1rem;
+}
+
+.pagination {
+    flex: none;
+    text-align: center;
 }
