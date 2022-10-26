@@ -1,12 +1,12 @@
 import React from 'react';
 
-
 Card.propTypes = {
     
 };
 
 function Card(props) {
     return (
+        <>
         <div className='card'>
             <div className="card__infor">
                 <h5 className=''>Title : Task1</h5>
@@ -21,6 +21,7 @@ function Card(props) {
                 <button>New <i class="fa-solid fa-chevron-down"></i></button>
             </div>
         </div>
+        </>
     );
 }
 

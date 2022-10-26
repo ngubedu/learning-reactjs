@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './CardList/Card';
+import CardList from './CardList/CardList';
 import Pagination from './Pagination/Pagination';
 
 SidebarMain.propTypes = {
@@ -9,20 +9,8 @@ SidebarMain.propTypes = {
 function SidebarMain(props) {
     return (
         <div className='sidebar__main'>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           <Card></Card>
-           
-          <Pagination></Pagination>
+            <CardList></CardList>
+            <Pagination></Pagination>
         </div>
     );
 }

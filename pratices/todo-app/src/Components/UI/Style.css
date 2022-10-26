@@ -78,15 +78,15 @@ body {
 
 }
 
-.sidebar__main {
+.sidebar__main {}
 
+.card__list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
     gap: .3rem;
     overflow: auto;
-
 }
 
 .card {
@@ -128,7 +128,21 @@ body {
     padding-left: 1rem;
 }
 
+/* pagination */
 .pagination {
-    flex: none;
-    text-align: center;
+    margin: 1rem 0;
+}
+
+.pagination .item__list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.item__page {
+    border: 1px solid #675BF1;
+    padding: 8px;
+    color: #675BF1;
+    font-weight: bold;
+    cursor: pointer;
 }
