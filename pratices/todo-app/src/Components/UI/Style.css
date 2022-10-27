@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.header {
+
+    background-color: #675BF1;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+
+.header__logo button {
+    padding: 8px;
+    background: none;
+    border: 2px solid #ffff;
+    color: aliceblue;
+    font-size: 24px;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+}
+
+.input__search input {
+    width: 500px;
+    margin-right: 10px;
+    height: 50px;
+    background: none;
+    border: 2px solid #ffff;
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+    color: #BBBBBB;
+    font-size: 24px;
+}
+
+.input__search button {
+    padding: 8px;
+    background: none;
+    border: 2px solid #ffff;
+    color: aliceblue;
+    font-size: 24px;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+}
+
+/* sidebar */
+.sidebar__sidebar {
+    min-width: 150px;
+    height: 686px;
+    background-color: #F88F14;
+}
+
+.list__item {
+    text-align: center;
+    list-style: none;
+}
+
+.item__link {
+    color: #fff;
+    font-weight: 400;
+    border-bottom: 2px solid #fff;
+    padding: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* container */
+.container {
+    display: flex;
+    background: #F5F5F5;
+
+}
+
+.sidebar__main {}
+
+.card__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: .3rem;
+    overflow: auto;
+}
+
+.card {
+    width: 190px;
+    height: 190px;
+    /* max-height: 200px; */
+    border: 2px solid #675BF1;
+    padding: .5rem;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: .4rem;
+    background: #fff;
+    /* overflow: auto; */
+}
+
+.card .card__infor {
+    border-bottom: 2px solid #675BF1;
+    padding-bottom: 5px;
+}
+
+.card .card__desscription {
+    padding: 7px 0;
+}
+
+.card .card__btn {
+    text-align: center;
+}
+
+.card .card__btn button {
+    padding: 5px 30px;
+    background: none;
+    border: 1px solid #675BF1;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.card .card__btn button i {
+    color: #675BF1;
+    padding-left: 1rem;
+}
+
+/* pagination */
+.pagination {
+    margin: 1rem 0;
+}
+
+.pagination .item__list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.item__page {
+    border: 1px solid #675BF1;
+    padding: 8px;
+    color: #675BF1;
+    font-weight: bold;
+    cursor: pointer;
+}
