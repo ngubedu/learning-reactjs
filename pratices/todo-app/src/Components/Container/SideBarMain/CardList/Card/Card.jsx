@@ -5,17 +5,18 @@ Card.propTypes = {
 };
 
 function Card(props) {
+    const {title,creator,status,desscription} = props;
     return (
         <>
         <div className='card'>
             <div className="card__infor">
-                <h5 className=''>Title : Task1</h5>
-                <p>Creator: Author 1</p>
-                <p>Status: New</p>
+                <h5 className=''>Title : {title}</h5>
+                <p>Creator: {creator}</p>
+                <p>Status: {status}</p>
             </div>
             <div className="card__desscription">
                 <h5>Desscription</h5>
-                <p>This is a task, This is a task, This is a task,...</p>
+                <p>{desscription}</p>
             </div>
             <div className="card__btn">
                 <button>New <i class="fa-solid fa-chevron-down"></i></button>
