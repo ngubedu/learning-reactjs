@@ -53,7 +53,7 @@ body {
 /* sidebar */
 .sidebar__sidebar {
     min-width: 150px;
-    height: 686px;
+    height: auto;
     background-color: #F88F14;
 }
 
@@ -78,7 +78,7 @@ body {
 
 }
 
-.sidebar__main {}
+/* .sidebar__main {} */
 
 .card__list {
     display: flex;
@@ -113,6 +113,26 @@ body {
 
 .card .card__btn {
     text-align: center;
+}
+
+.card .card__btn select {
+    border: none;
+    width: 80px;
+    font-size: 16px;
+    text-align: center;
+
+}
+
+.card .card__btn select:focus {
+    border: none;
+}
+
+.card .card__btn select:hover {
+    border: none;
+}
+
+.card .card__btn select::after {
+    border: none;
 }
 
 .card .card__btn button {

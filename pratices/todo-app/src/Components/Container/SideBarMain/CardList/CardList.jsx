@@ -16,7 +16,7 @@ function CardList(props) {
     {
       title:"task2",
       creator:"author 1",
-      status:"doing",
+      status:"new",
       desscription: "This is a task, This is a task, This is a task,...",
     },
     {
@@ -77,6 +77,7 @@ function CardList(props) {
     },
    
   ]
+ 
     return (
       <>
       <div className="card__list">
@@ -91,20 +92,6 @@ function CardList(props) {
               ))}
         </div>
       </>
-      //  <div className="card__list">
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //    <Card/>
-      //  </div>
     );
 }
 
