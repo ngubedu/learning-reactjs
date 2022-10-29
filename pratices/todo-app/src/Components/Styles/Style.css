@@ -124,15 +124,15 @@ body {
 }
 
 .card .card__btn select:focus {
-    border: none;
+    border: #fff;
 }
 
 .card .card__btn select:hover {
-    border: none;
+    border: #fff;
 }
 
 .card .card__btn select::after {
-    border: none;
+    border: #fff;
 }
 
 .card .card__btn button {

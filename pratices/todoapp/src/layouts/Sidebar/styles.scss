@@ -1,0 +1,20 @@
+.sidebar {
+  width: 160px;
+  background-color: var(--orange);
+  height: 100%;
+  position: fixed;
+
+  &__item {
+    height: 40px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid white;
+
+    p {
+      font-size: 24px;
+      color: white;
+    }
+  }
+}

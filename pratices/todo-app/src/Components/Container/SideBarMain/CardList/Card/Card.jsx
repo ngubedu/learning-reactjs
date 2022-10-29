@@ -4,6 +4,7 @@ Card.propTypes = {};
 
 function Card(props) {
     const {title,creator,desscription} = props;
+    
     const [status, setStatus] = useState("New")
     const handleSubmit = (e) =>{
        const selectedStatus = e.target.value;
