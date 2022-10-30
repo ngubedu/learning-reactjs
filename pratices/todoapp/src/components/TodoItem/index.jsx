@@ -1,14 +1,29 @@
 import React from 'react';
 import { useState } from 'react';
+import { Status } from '../datas/constains';
 import './styles.scss';
-
+// import {nemBerTodo} from '../datas/todo'
 const TodoItem = (props) => {
-  const {title,creator,desscription} = props;
-  const [status, setStatus] = useState("New")
-  const handleSubmit = (e) =>{
-     const selectedStatus = e.target.value;
-     setStatus(selectedStatus)
+  // const [nemBerTodo,setNemBerTodo] = useState([]);
+  
+  const {title,creator, desscription} = props;
+  const [status, setStatus] = useState(Status.NEW)
+  
+  const handleSubmit = () =>{
+     switch (status) {
+      case Status.NEW:
+        setStatus(Status.DOING);
+       
+        break;
+        case Status.DOING:
+          setStatus(Status.DONE);
+          break;
+      default :
+      setStatus(Status.NEW) 
+        break;
+     }
   }
+
   return (
     <div className="card">
       <div className="card__container">
@@ -22,20 +37,16 @@ const TodoItem = (props) => {
         </p>
         <p className="card__status">
           <label>Status: </label>
-          <label>{status}</label>
+          <label>{status || Status.NEW}</label>
         </p>
         <hr className="card__lineBreak" />
-        <p className="card__description">Description: {desscription}</p>
+        <p className="card__description">Description:{desscription}</p>
         <div className="card__btn">
                 <button 
-                onChange={handleSubmit}
+                onClick={handleSubmit}
                 value={status}
                 >
-                    <select  id="select__status" >
-                    <option value="New" >New</option>
-                    <option value="Doing" >Doing</option>
-                    <option value="Done" >Done</option>
-                    </select>               
+                  {status}
                 </button>
             </div>
       </div>

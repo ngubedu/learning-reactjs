@@ -36,6 +36,7 @@
   &__btn{
     margin-top: .5rem;
     text-align: center;
+    outline: none;
    
   }
   &__btn > button{
@@ -47,5 +48,6 @@
   }
   &__btn > button > select{
     border: none;
+    outline: none;
   }
 }
