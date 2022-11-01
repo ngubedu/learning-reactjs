@@ -5,7 +5,7 @@ import './styles.scss';
 // import {nemBerTodo} from '../datas/todo'
 const TodoItem = (props) => {
   // const [nemBerTodo,setNemBerTodo] = useState([]);
-  const {title, creator, desscription} = props;
+  const {title, author, desscription} = props;
   const [status, setStatus] = useState(Status.NEW)
   const [textColor, setTextColor] = useState("var(--new)")
 
@@ -21,7 +21,7 @@ const TodoItem = (props) => {
       setTextColor(" var(--new)");
     }
   }
-  
+
   return (
     <div className="card">
       <div className="card__container">
@@ -32,7 +32,7 @@ const TodoItem = (props) => {
         </p>
         <p className="card__creator" >
           <label>Creator: </label>
-          <label>{creator}</label>
+          <label>{author}</label>
         </p>
         <p className="card__status" 
         key={status}

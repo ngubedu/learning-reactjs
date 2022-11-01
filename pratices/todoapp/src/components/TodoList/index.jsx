@@ -2,29 +2,17 @@ import React from 'react';
 // import { useState } from 'react';
 // import {Status} from '../data/constains'
 import TodoItem from '../TodoItem';
-import {nemBerTodo} from '../datas/todo'
+// import {nemBerTodo} from '../datas/todo'
 import './styles.scss';
 
 
 const TodoList = (props) => {
-  // const [todo,setTodo] = useState("")
-  // const [todos, setTodos] = useState(() => {
-  //   const storageTodos = JSON.parse(localStorage.getItem('todos'))
-  //   return storageTodos;
-  // });
-  // const [todos, setTodos] = useState(nemBerTodo)
-
-  //     setTodos(() =>{
-  //       const newTodos =nemBerTodo
-  //       const jsonTodos = JSON.stringify(newTodos)
-  //       localStorage.setItem('todos', jsonTodos)
-  //      return jsonTodos;
-  //     })
-  
+ let  data = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
+//  console.log(datas)
   return (
     <>
       <div className="todos">
-     { nemBerTodo.map((data,id) => (
+     { data.map((data,id) => (
       <TodoItem 
       key= {id}
       title= {data.title}
@@ -34,7 +22,6 @@ const TodoList = (props) => {
       />
      ))}
       </div>
-
     </>
   );
 };

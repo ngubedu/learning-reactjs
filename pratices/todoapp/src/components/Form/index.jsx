@@ -1,56 +1,39 @@
-import React from 'react';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import { Status } from '../datas/constains';
+import {v4 as uuidv4} from 'uuid'
+// import InputText from '../common/InputText';
 import './style.scss';
 
 const Form = (props) => {
-    // const [msgs, setMsgs] =useState({
-    //     msgTitle:"",
-    //     msgAuthor:"",
-    //     msgDessctrition:"",
-    // })
+let todoList = [];
+  localStorage.setItem('todos', JSON.stringify(todoList));
 
     const  [tasks ,setTasks] = useState({
+        id : uuidv4(),
         title: '',
         author: '',
         dessctription:'',
         status: Status.NEW,
     }
     );
-    // formValidation form
-    const formValidation = () => {
-        if (tasks.title === "") {
-            alert("xin moi nhap title")
-            return
-        }
-        if (tasks.author === "") {
-            alert("xin moi nhap author")
-            return
-        }
-        if (tasks.dessctription === "") {
-            alert("xin moi nhap dessctription")
-            return
-        }
-    }
     const onChangeText = (e) =>{
      setTasks((prev) =>({
          ...prev,
          [e.target.name]: e.target.value,
      }))
-     console.log(tasks);
  
     }
     // button submit form 
     const handleSubmit = (e) => {
         e.preventDefault();
-        formValidation()
-
-        console.log("click");
-        // save to localStore
+        // formValidation()
+    
+        todoList.push(tasks);
+        localStorage.setItem('todos', JSON.stringify(tasks))
     }
     return (
     <>
-    <form className='form'>
+    <form className='form' onSubmit={handleSubmit}>
         <div className="form__group">
             <label htmlFor="">title</label>
             <input type="text" 
@@ -58,7 +41,7 @@ const Form = (props) => {
             value={tasks.title}
             onChange = {onChangeText}
             />
-            {/* <span>{msgs.msgTitle}</span> */}
+            {/* <InputText InputValue={tasks.title}/> */}
         </div>
         <div className="form__group">
             <label htmlFor="">Creator</label>
@@ -68,7 +51,6 @@ const Form = (props) => {
                 value={tasks.author}
                onChange = {onChangeText}
             />
-             {/* <span>{msgs.msgAuthor}</span> */}
         </div> 
         <div className="form__group">
             <label htmlFor="">dessctription</label>
@@ -77,10 +59,9 @@ const Form = (props) => {
             value={tasks.dessctription}
             onChange = {onChangeText}
             />
-             {/* <span>{msgs.msgDessctrition}</span> */}
         </div> 
         <div className="form__submit">
-            <input type="submit" onClick={handleSubmit}/> 
+            <input type="submit" /> 
         </div>
     </form>
     </>
