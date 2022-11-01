@@ -5,21 +5,21 @@ import TodoItem from '../TodoItem';
 import {nemBerTodo} from '../datas/todo'
 import './styles.scss';
 
+
 const TodoList = (props) => {
   // const [todo,setTodo] = useState("")
   // const [todos, setTodos] = useState(() => {
   //   const storageTodos = JSON.parse(localStorage.getItem('todos'))
- 
   //   return storageTodos;
   // });
-   
-      // setTodos(() =>{
-      //   const newTodos =nemBerTodo
-      //   const jsonTodos = JSON.stringify(newTodos)
-      //   localStorage.setItem('todos', jsonTodos)
+  // const [todos, setTodos] = useState(nemBerTodo)
 
-      //  return jsonTodos;
-      // })
+  //     setTodos(() =>{
+  //       const newTodos =nemBerTodo
+  //       const jsonTodos = JSON.stringify(newTodos)
+  //       localStorage.setItem('todos', jsonTodos)
+  //      return jsonTodos;
+  //     })
   
   return (
     <>
@@ -33,7 +33,6 @@ const TodoList = (props) => {
       desscription= {data.desscription}
       />
      ))}
-    {console.log(nemBerTodo)}
       </div>
 
     </>

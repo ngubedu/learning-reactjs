@@ -16,12 +16,15 @@ code {
 * {
   box-sizing: border-box;
 }
+
 :root {
   --primary: #675bf1;
   --new: #04be00;
   --orange: #f88f14;
   --white: #fff;
+  --xam: #ecf0f1;
 }
+
 a,
 p,
 ul,
@@ -35,6 +38,7 @@ h6 {
   padding: 0;
   margin: 0;
 }
+
 p {
   font-size: 14px;
   line-height: 18px;

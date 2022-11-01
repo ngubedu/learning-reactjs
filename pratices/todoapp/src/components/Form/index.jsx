@@ -1,37 +1,86 @@
-
 import React from 'react';
-
+import { useState } from 'react';
+import { Status } from '../datas/constains';
 import './style.scss';
 
 const Form = (props) => {
-  return (
+    // const [msgs, setMsgs] =useState({
+    //     msgTitle:"",
+    //     msgAuthor:"",
+    //     msgDessctrition:"",
+    // })
+
+    const  [tasks ,setTasks] = useState({
+        title: '',
+        author: '',
+        dessctription:'',
+        status: Status.NEW,
+    }
+    );
+    // formValidation form
+    const formValidation = () => {
+        if (tasks.title === "") {
+            alert("xin moi nhap title")
+            return
+        }
+        if (tasks.author === "") {
+            alert("xin moi nhap author")
+            return
+        }
+        if (tasks.dessctription === "") {
+            alert("xin moi nhap dessctription")
+            return
+        }
+    }
+    const onChangeText = (e) =>{
+     setTasks((prev) =>({
+         ...prev,
+         [e.target.name]: e.target.value,
+     }))
+     console.log(tasks);
+ 
+    }
+    // button submit form 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        formValidation()
+
+        console.log("click");
+        // save to localStore
+    }
+    return (
     <>
     <form className='form'>
         <div className="form__group">
             <label htmlFor="">title</label>
-            <input type="text" defaultValue={"task1"}/>
+            <input type="text" 
+            name="title"
+            value={tasks.title}
+            onChange = {onChangeText}
+            />
+            {/* <span>{msgs.msgTitle}</span> */}
         </div>
         <div className="form__group">
             <label htmlFor="">Creator</label>
-            <input type="text" defaultValue={"Author 1 "} />
+            <input 
+                type="text"  
+                name="author"
+                value={tasks.author}
+               onChange = {onChangeText}
+            />
+             {/* <span>{msgs.msgAuthor}</span> */}
         </div> 
         <div className="form__group">
-            <label htmlFor="">Desscription</label>
-            <input type="text" defaultValue={"This is a task "}/>
+            <label htmlFor="">dessctription</label>
+            <input type="text"
+            name="dessctription"
+            value={tasks.dessctription}
+            onChange = {onChangeText}
+            />
+             {/* <span>{msgs.msgDessctrition}</span> */}
         </div> 
- 
-        <div className="form__group">
-            <label htmlFor="">Status
-            </label>
-            <select name="" id="">
-                <option value="new">new</option>
-                <option value="Dongin">Dongin</option>
-                <option value="Done">Done</option>
-            </select>
-        </div>
         <div className="form__submit">
-            <input type="submit" /> 
-      
+            <input type="submit" onClick={handleSubmit}/> 
         </div>
     </form>
     </>
