@@ -1,13 +1,12 @@
 import React,{ useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Status } from '../datas/constains';
 import {v4 as uuidv4} from 'uuid'
-// import InputText from '../common/InputText';
 import './style.scss';
 
-const Form = (props) => {
-let todoList = [];
-  localStorage.setItem('todos', JSON.stringify(todoList));
-
+const FormAddNewTask = (props) => {
+    const data = localStorage.getItem('todos')? JSON.parse(localStorage.getItem('todos')): [];
+    // set object task gom các element chuoi: '';
     const  [tasks ,setTasks] = useState({
         id : uuidv4(),
         title: '',
@@ -16,20 +15,27 @@ let todoList = [];
         status: Status.NEW,
     }
     );
+    // add envent onchange  value of input
     const onChangeText = (e) =>{
      setTasks((prev) =>({
          ...prev,
          [e.target.name]: e.target.value,
      }))
- 
     }
-    // button submit form 
+    const validateForm = () =>{ 
+    }
+    // add event ónubmit submit form localStrore and next page 
+    let navigate = useNavigate(); 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // formValidation()
-    
-        todoList.push(tasks);
-        localStorage.setItem('todos', JSON.stringify(tasks))
+        // validate form
+        validateForm();
+        data.push(tasks);
+        localStorage.setItem('todos', JSON.stringify(data));
+        // alert("Add new success")
+        // next page
+        let path = '/';
+        navigate(path);
     }
     return (
     <>
@@ -39,9 +45,8 @@ let todoList = [];
             <input type="text" 
             name="title"
             value={tasks.title}
-            onChange = {onChangeText}
+            onChange={onChangeText}
             />
-            {/* <InputText InputValue={tasks.title}/> */}
         </div>
         <div className="form__group">
             <label htmlFor="">Creator</label>
@@ -49,7 +54,7 @@ let todoList = [];
                 type="text"  
                 name="author"
                 value={tasks.author}
-               onChange = {onChangeText}
+               onChange={onChangeText}
             />
         </div> 
         <div className="form__group">
@@ -57,17 +62,17 @@ let todoList = [];
             <input type="text"
             name="dessctription"
             value={tasks.dessctription}
-            onChange = {onChangeText}
+            onChange={onChangeText}
             />
         </div> 
         <div className="form__submit">
-            <input type="submit" /> 
+            <input type="submit" value={'Save'}/> 
         </div>
     </form>
     </>
   );
 };
 
-Form.propTypes = {};
 
-export default Form;
+
+export default FormAddNewTask;

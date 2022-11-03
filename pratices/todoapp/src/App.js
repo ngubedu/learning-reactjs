@@ -1,23 +1,22 @@
-import Header from "./layouts/Header";
-import Sidebar from "./layouts/Sidebar";
-import MainContent from "./layouts/MainContent";
-// import { Routes, Route, Form } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import FormAddNewTask from "./components/FormAddNewTask";
+import Header from "./layouts/Header";
+import MainContent from "./layouts/MainContent";
+import Sidebar from "./layouts/Sidebar";
 
 function App() {
   return (
     <>
-      {/* <Routes>
-        <Route path="/home" element={<Sidebar />} />
-        <Route path="/add-new" element={<Form />} />
-      </Routes> */}
       <Header />
-      <div className="main-content ">
+      <div className="main-content">
         <Sidebar />
-        <MainContent />
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/add-newtask" element={<FormAddNewTask />} />
+        </Routes>
       </div>
     </>
   );
 }
-
 export default App;

@@ -1,24 +1,35 @@
 import React from 'react';
-// import { useState } from 'react';
-// import {Status} from '../data/constains'
+import { useState } from 'react';
 import TodoItem from '../TodoItem';
-// import {nemBerTodo} from '../datas/todo'
 import './styles.scss';
-
-
 const TodoList = (props) => {
- let  data = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
-//  console.log(datas)
+  const data = localStorage.getItem('todos')? JSON.parse(localStorage.getItem('todos')): [];
+  // gán todoList về arr of data localstore
+  const [todoList, setTodoList] = useState(data);
+
+  const handleChange = (idx, newStatus) => {
+    // New todoList frome current one
+    const newTodoList = [...todoList];
+    // Update status for item by index
+    newTodoList[idx] = {
+      ...todoList[idx],
+      status: newStatus,
+    };
+    setTodoList(newTodoList);
+  };
+
   return (
     <>
       <div className="todos">
-     { data.map((data,id) => (
+     { todoList.map((data,index) => (
       <TodoItem 
-      key= {id}
+      idx = {index}
+      key= {index}
       title= {data.title}
-      creator= {data.creator}
+      author= {data.author}
       status= {data.status}
-      desscription= {data.desscription}
+      desscription= {data.dessctription}
+      onHandChange ={handleChange}
       />
      ))}
       </div>

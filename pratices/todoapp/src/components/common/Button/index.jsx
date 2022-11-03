@@ -2,10 +2,18 @@ import React from 'react';
 
 import './styles.scss';
 
-const Button = (props) => {
-  return <button className="btn">Create New Task</button>;
+const Button = ({name,onClickButton}) => {
+ const handleClickBtnCreateNewTask = () =>{
+  onClickButton();
+ }
+  return( 
+    <>
+    <button className="btn" 
+    onClick={handleClickBtnCreateNewTask}
+    >
+      {name} 
+    </button>
+    </>
+  )
 };
-
-Button.propTypes = {};
-
 export default Button;

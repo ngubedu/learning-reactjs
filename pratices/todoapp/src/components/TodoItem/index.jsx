@@ -2,14 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { Status } from '../datas/constains';
 import './styles.scss';
-// import {nemBerTodo} from '../datas/todo'
 const TodoItem = (props) => {
-  // const [nemBerTodo,setNemBerTodo] = useState([]);
   const {title, author, desscription} = props;
+  // const {idx, onHandleChange } = props;
   const [status, setStatus] = useState(Status.NEW)
   const [textColor, setTextColor] = useState("var(--new)")
 
-  const handleSubmit = () =>{
+  const handleChangeStatus = () =>{
     if (status === Status.NEW ) {
       setStatus(Status.DOING);
       setTextColor(" var(--orange) ");
@@ -42,10 +41,10 @@ const TodoItem = (props) => {
           <label>{status }</label>
         </p>
         <hr className="card__lineBreak" />
-        <p className="card__description">Description:{desscription}</p>
+        <p className="card__description">Description: {desscription}</p>
         <div className="card__btn">
                 <button 
-                onClick={() =>handleSubmit()}
+                onClick={() =>handleChangeStatus()}
                 value={status}
                 >
                 {status}
