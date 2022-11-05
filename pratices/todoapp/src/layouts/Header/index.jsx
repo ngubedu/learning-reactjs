@@ -7,7 +7,6 @@ import './styles.scss';
 const Header = (props) => {
   let navigate = useNavigate(); 
 const onClickBtn = () =>{
-  // window.location.href='/add-newtask'
   let path = '/add-newtask';
   navigate(path);
 }

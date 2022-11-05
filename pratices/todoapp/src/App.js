@@ -3,6 +3,7 @@ import "./App.css";
 import FormAddNewTask from "./components/FormAddNewTask";
 import Header from "./layouts/Header";
 import MainContent from "./layouts/MainContent";
+import NotFault from "./layouts/NotFoult";
 import Sidebar from "./layouts/Sidebar";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/add-newtask" element={<FormAddNewTask />} />
+          <Route path="/*" element={<NotFault />} />
         </Routes>
       </div>
     </>

@@ -1,5 +1,5 @@
 .form{
-    width: 500px;
+    width: 600px;
    height: 200px;
     margin:  .5rem auto;
     font-size: 1rem;
@@ -23,7 +23,13 @@
         outline: none;
       
     }
-
+    &__group > span {
+        flex: 1;
+        color: red;
+        margin-left: 1rem;
+        font-size: 12px;
+    
+    }
     &__submit{
         text-align: center;
        
@@ -37,4 +43,5 @@
         background-color: var(--primary);
         color: var(--white);
     }
+  
 }
