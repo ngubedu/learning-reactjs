@@ -3,6 +3,7 @@ import React from 'react';
 import './styles.scss';
 
 const Pagination = (props) => {
+  
   return (
     <div className="pagination">
       <div className="pagination__page">{'<'}</div>

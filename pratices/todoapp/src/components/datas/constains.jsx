@@ -3,3 +3,8 @@ export const Status = {
     DOING:"DOING",
     DONE:"DONE",
 }
+export const COLOR ={
+    colorNew: "var(--new)",
+    colorDoing: "var(--orange)",
+    colorDone: "var(--primary)",
+}

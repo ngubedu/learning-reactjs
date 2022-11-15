@@ -6,4 +6,19 @@
   align-content: flex-start;
   gap: .5rem;
   overflow: auto;
+  &__emptyItem{
+    width: 500px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+    background-color:#95a5a6;
+    height: 50px;
+    border: 1px solid  #95a5a6;
+    border-radius: 10px;
+  }
+  &__emptyItem >h1{
+    font-size: 1rem;
+    color: black;
+    font-weight: 400;
+  }
 }

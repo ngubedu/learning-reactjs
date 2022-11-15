@@ -1,67 +1,72 @@
 import React from 'react';
 import { useState } from 'react';
-import { Status } from '../datas/constains';
+import { Status , COLOR } from '../datas/constains';
+import { Link } from "react-router-dom";
+import Button from '../common/Button';
 import './styles.scss';
-const TodoItem = ({title, author, desscription, removeTodoItem, id, onHandleChange, status}) => {
-  const [newStatus, setNewStatus] = useState(status)
-  const [textColor, setTextColor] = useState("var(--new)")
-  const handleChangeStatus = (e) =>{
+const TodoItem = ({removeTodoItem,idx,onHandleChange,todo,id}) => {
+  const [newStatus, setNewStatus] = useState(todo.status)
+  const [textColor, setTextColor] = useState(todo.color)
+  const handleChangeStatus = (e) =>{ 
     switch (newStatus) {
-      case status:
+      case Status.NEW:
         setNewStatus(Status.DOING);
-        setTextColor(" var(--orange) ")
+        setTextColor(COLOR.colorDoing)
         break;
         case Status.DOING:
           setNewStatus(Status.DONE);
-          setTextColor(" var(--primary) ")
+          setTextColor(COLOR.colorDone)
           break;
           default:
             setNewStatus(Status.NEW) 
-            setTextColor(" var(--new)");
+            setTextColor(COLOR.colorNew);
             break;
-          }
-    onHandleChange(id)
+          }  
+      onHandleChange(newStatus, textColor,idx)
+      console.log(id)
   }
   // **********************
   const handleDeleteItem =()=>{
     removeTodoItem(id)
   }
+
   return (
    <>
     <div className="card">
       <div className="card__container">
         <div className="card__btnClose">
-          <button 
-          id={id}
-          onClick={handleDeleteItem}
-          >x
-          </button>
+          <Button
+          name={"x"}
+          handleClick={handleDeleteItem}
+          />
         </div>
         <p className="card__title">
           <label>Title: </label>
-          <label>{title}</label>
+          <label>{todo.title}</label>
         </p>
         <p className="card__creator" >
           <label>Creator: </label>
-          <label>{author}</label>
+          <label>{todo.author}</label>
         </p>
         <p className="card__status" 
-        key={status}
-        style ={ {color : textColor}}
+        style={{color:todo.color}}
         >
           <label>Status: </label>
-          <label>{newStatus }</label>
+          <label>{todo.status}</label>
         </p>
         <hr className="card__lineBreak" />
-        <p className="card__description">Description: {desscription}</p>
+        <p className="card__description">Description: {todo.description}</p>
         <div className="card__btn">
-                <button 
-                id={id}
-                onClick={handleChangeStatus}
-                value={status}
-                >
-                {newStatus}
-                </button>
+            <Button
+              handleClick={handleChangeStatus}
+              name={todo.status}
+            />
+            <Link to={`/update-task/${todo.id}`} state={{ todo: todo }}>
+              <Button
+                className="card__btn--update"
+                name={<i className="fa-sharp fa-solid fa-pen-to-square"></i>}
+              /> 
+            </Link>
             </div>
       </div>
     </div>

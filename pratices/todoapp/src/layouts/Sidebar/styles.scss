@@ -1,7 +1,7 @@
 .sidebar {
   width: 160px;
+  height: calc((100vh - 70px));
   background-color: var(--orange);
-
   &__item {
     height: 40px;
     width: inherit;
@@ -9,7 +9,6 @@
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid white;
-
     p {
       font-size: 24px;
     }

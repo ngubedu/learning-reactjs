@@ -1,18 +1,13 @@
 import React from 'react';
 import Pagination from '../../components/Pagination';
 import TodoList from '../../components/TodoList';
-
 import './styles.scss';
-
-const MainContent = (props) => {
+const MainContent = ({status}) => {
   return (
     <div className="main-container">
-      <TodoList />
+      <TodoList status={status}/>
       <Pagination />
     </div>
   );
 };
-
-MainContent.propTypes = {};
-
 export default MainContent;

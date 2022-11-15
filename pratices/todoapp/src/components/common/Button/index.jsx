@@ -2,14 +2,12 @@ import React from 'react';
 
 import './styles.scss';
 
-const Button = ({name,onClickButton}) => {
- const handleClickBtnCreateNewTask = () =>{
-  onClickButton();
- }
+const Button = ({name,handleClick,className}) => {
+
   return( 
     <>
-    <button className="btn" 
-    onClick={handleClickBtnCreateNewTask}
+    <button className={className}
+    onClick={handleClick}
     >
       {name} 
     </button>

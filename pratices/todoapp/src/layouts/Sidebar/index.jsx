@@ -6,7 +6,7 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar">
       <div className="sidebar__item">
-        <p><Link to="/">All Task</Link></p>
+        <p><Link to="/all-task">All Task</Link></p>
       </div>
       <div className="sidebar__item">
         <p><Link to="/new-task">New Task</Link></p>

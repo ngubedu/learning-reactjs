@@ -1,7 +1,7 @@
 .main-container {
   width: 100%;
+  height: calc((100vh - 70px));
   display: flex;
-  height: 90.5vh;
   margin: 0  auto;
   background-color: var(--xam);
 }

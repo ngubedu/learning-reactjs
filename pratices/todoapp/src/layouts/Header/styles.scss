@@ -6,10 +6,10 @@
   padding: 10px;
   background-color: var(--primary);
   position: fixed;
-
-
-  &__right > button {
-    width: 100px;
+  color: white;
+}
+.button__create{
+  width: 200px;
     height: 50px;
     font-size: 24px;
     color: white;
@@ -19,5 +19,18 @@
     border-bottom-left-radius: 0;
     background-color: transparent;
     cursor: pointer;
-  }
+}
+.input__search{
+  width: auto;
+  height: 50px;
+  font-size: 24px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: transparent;
+  outline:  none;
+  margin-right: 2rem;
+  padding: 1rem;
 }

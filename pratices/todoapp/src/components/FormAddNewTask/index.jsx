@@ -1,8 +1,11 @@
 import React,{ useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Status } from '../datas/constains';
+import { COLOR, Status } from '../datas/constains';
 import {v4 as uuidv4} from 'uuid'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.scss';
+import InputText from "../common/InputText"
 const FormAddNewTask = (props) => {
     const data = localStorage.getItem('todos')? JSON.parse(localStorage.getItem('todos')): [];
     // create validate from 
@@ -12,8 +15,9 @@ const FormAddNewTask = (props) => {
         id : uuidv4(),
         title: '',
         author: '',
-        dessctription:'',
+        description:'',
         status: Status.NEW,
+        color: COLOR.colorNew,
     }
     );
     // add envent onchange  value of input
@@ -22,7 +26,6 @@ const FormAddNewTask = (props) => {
             ...prev,
             [e.target.name]: e.target.value,
         }))
-     validateForm()
     }
     //  valid form
     const validateForm = () =>{ 
@@ -37,8 +40,8 @@ const FormAddNewTask = (props) => {
       if (!tasks.author) {
         errors.author = "* Author is required"
       }
-      if (!tasks.dessctription) {
-        errors.dessctription = "* Dessctription is required"
+      if (!tasks.description) {
+        errors.description = "* description is required"
       }
         setMsgErrors(errors)
         if(Object.keys(errors).length === 0){
@@ -71,40 +74,51 @@ const FormAddNewTask = (props) => {
             localStorage.setItem('todos', JSON.stringify(data));
             let path = '/';
             navigate(path);
+            toast.success("Add new success")
     }
     return (
     <>
     <form className='form' onSubmit={handleSubmit}>
         <div className="form__group">
-            <label htmlFor="">title</label>
-            <input type="text" 
+            <label htmlFor="title">title</label>
+            <InputText
+            type="text"
             name="title"
-            value={tasks.title}
-            onChange={onChangeText}
+            id='title'
+            value ={tasks.title}
+            placeholder="Enter title"
+            handleOnchange={onChangeText}
             />
             <span>{msgErrors.title}</span>
         </div>
         <div className="form__group">
-            <label htmlFor="">Creator</label>
-            <input 
-                type="text"  
-                name="author"
-                value={tasks.author}
-               onChange={onChangeText}
+            <label htmlFor="author">Creator</label>
+            <InputText
+            type="text"
+            name="author"
+            id='author'
+            placeholder="Enter author"
+            value ={tasks.author}
+            handleOnchange={onChangeText}
             />
             <span>{msgErrors.author}</span>
         </div> 
         <div className="form__group">
-            <label htmlFor="">dessctription</label>
-            <input type="text"
-            name="dessctription"
-            value={tasks.dessctription}
-            onChange={onChangeText}
+            <label htmlFor="description">description</label>
+            <InputText
+            type="text"
+            name="description"
+            id='description'
+            placeholder="Enter description"
+            value ={tasks.description}
+            handleOnchange={onChangeText}
             />
-            <span>{msgErrors.dessctription}</span>
+            <span>{msgErrors.description}</span>
         </div> 
         <div className="form__submit">
-            <input type="submit" value={'Save'}/> 
+            <InputText 
+            type="submit" value={'Save'}
+            />
         </div>
     </form>
     </>

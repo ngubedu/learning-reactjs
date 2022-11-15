@@ -5,7 +5,20 @@
   border: 2px solid var(--primary);
   margin: .5rem .5rem;
   background-color: var(--white);
+  .NEW {
+    color: #04be00;
+    font-weight: 700;
+  }
 
+  .DOING {
+    color: #f88f14;
+    font-weight: 700;
+  }
+
+  .DONE {
+    color: #675bf1;
+    font-weight: 700;
+  }
 
   &__container {
     padding: 10px;
@@ -31,7 +44,17 @@
   &__status {
     &--new {
       color: var(--new);
+      font-weight: bold;
     }
+    &--doing{
+      color: var(--orange);
+      font-weight: bold;
+    }
+    &--primary{
+      color: var(--primary);
+      font-weight: bold;
+    }
+    font-weight: bold;
   }
   &__lineBreak {
     height: 2px;
@@ -53,23 +76,29 @@
   }
   &__btn > button{
     padding: 5px 30px;
-    background: none;
-    border: 1px solid #675BF1;
+    background: #0984e3;
+    border: 1px solid #dfe4ea;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    margin: 0 1rem;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px, rgba(0, 0, 0, 0.22) 0px 5px 2px;
+    
   }
   &__btn > button > select{
-  
     outline: none;
   }
+ 
 }
-.status__new{
-  color: var(--new);
-}
-.status__doing{
-  color: var(--orange);
-}
-.status__done{
-  color:var( --primary) ;
+.card__btn--update {
+  padding: 5px 30px;
+  background: #0984e3;
+  border: 1px solid #dfe4ea;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 1rem;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px, rgba(0, 0, 0, 0.22) 0px 5px 2px;
 }

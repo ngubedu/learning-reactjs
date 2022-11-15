@@ -3,7 +3,7 @@ import Button from '../common/Button/Button';
 import './styles.scss'
 function CartModal(props) {
     return (
-        <div className='cartModal hide'>         
+        <div className='cartModal '>         
             <div className='cartContent'>
                 <div className='cartContent__title'>
                     <p>Shop Cart</p>

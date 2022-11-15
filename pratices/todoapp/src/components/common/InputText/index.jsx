@@ -1,19 +1,20 @@
 import React from 'react';
-
 import './styles.scss';
 
-const InputText = ({inputValue, onChangeText}) => {
-
+const InputText = ({handleOnchange,inputClassName,placeholder,id,name,type,value}) => {
   return (
     <>
-    <input className="input-text" placeholder="Type something to search" />  
-    
-    {/* <input type="text" value={inputValue} name="title" onChange={onChangeText}/>  */}
+    <input 
+    id={id}
+    name={name}
+    type={type}
+    value={value}
+    className={inputClassName}
+    placeholder= {placeholder}
+    onChange={handleOnchange}/> 
     </>
-
   );
 };
 
-InputText.propTypes = {};
 
 export default InputText;

@@ -6,6 +6,12 @@
     border-radius: 5px;
     padding: 1rem;
     background-color: var(--white);
+    h1{
+        color: var(--primary);
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
     &__group{
         margin-bottom: 1rem;
         display: flex;
@@ -30,8 +36,20 @@
         font-size: 12px;
     
     }
+    &__checkBox{
+        font-weight: 500;
+    }
+    &__checkBox > label{
+       
+        margin-right: 2.5rem;
+    }
+    &__checkBox > input {
+        margin-left: 3rem;
+  
+    }
     &__submit{
         text-align: center;
+        margin-top: 1rem;
        
     }
     &__submit > input{
