@@ -1,0 +1,35 @@
+.main-product{
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: #f0f0f0;
+}
+.product{
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 1.5rem;
+    overflow: auto;
+}
+.total{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    &__btn{
+        padding: .2rem .5rem;
+        border-radius: 5px;
+        background-color: var(--blue);
+        border: 1px solid var(--blue);
+        color: var(--white);
+        cursor: pointer;
+    }
+    &__btn > i {
+        margin-right: .3rem;
+    }
+}
+.todo__emptyItem{
+    text-align: center;
+}

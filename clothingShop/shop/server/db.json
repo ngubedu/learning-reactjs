@@ -1,0 +1,17 @@
+{
+  "product": [
+    {
+      "id": "a9d15ef8-d76d-4ede-b801-ae3a31535bd8",
+      "name": "ao new",
+      "price": "2132",
+      "image": "https://dosi-in.com/images/detailed/42/CDL10_1.jpg"
+    },
+    {
+      "id": "db585fda-3c32-42ff-8a23-2822de69181f",
+      "name": "ao mavel",
+      "price": "1000",
+      "image": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/434247/item/goods_00_434247.jpg?width=1600&impolicy=quality_75"
+    }
+  ],
+  "OrderProduct": []
+}

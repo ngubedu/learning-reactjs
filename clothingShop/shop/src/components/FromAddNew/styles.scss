@@ -1,0 +1,48 @@
+.form{
+    width: 400px;
+    margin:  .5rem auto;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: var(--white);
+    &__title{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    &__group{
+        margin-bottom: 2rem;
+        display: flex;
+    }
+    &__group > label {
+        flex: 1;
+        font-weight: 500;
+    }
+    &__group > input {
+        flex: 3;
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        padding: 0 .5rem;
+    }
+    &__btn{
+        text-align: center;
+       
+    }
+    &__btn > input{
+        margin: .5rem;
+        padding: .4rem 1rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: var(--blue);
+        color: var(--white);
+    }
+    &__msgError{
+        color: var(--red);
+        position: relative;
+        top: -30px;
+        left: 90px;
+        font-size: 14px;
+        font-style: italic;
+    }
+}
