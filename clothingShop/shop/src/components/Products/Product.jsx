@@ -7,7 +7,7 @@ import { STATUS_CODE } from '../constants';
 import productApis from '../apis/productApis';
 import { Link } from 'react-router-dom';
 import Button from '../common/Button/Button';
-import CartModal from '../CartModal/CartModal';
+
 function Product(props) {
     const [productList, setProductList] = useState([])
     const fetchData = async () => {
@@ -22,8 +22,7 @@ function Product(props) {
       };
       useEffect(() => {
         fetchData();
-      }, []); 
-    
+      },[]); 
     return (
         <>
         <div className='main-product'>
@@ -34,17 +33,16 @@ function Product(props) {
                 </Link>
             </div>
             {productList.length === 0 &&<h1 className="todo__emptyItem">Không có sản phẩm nào được thêm vào</h1>}
-            
             <div className="product">
            {productList.map((data) =>(
             <ProductItems
                 product={data}
                 key={data.id}
-                isUpdate="false"
             />
            ))}
             </div>
-            <ToastContainer
+        </div>
+        <ToastContainer
                 position="bottom-right"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -56,8 +54,6 @@ function Product(props) {
                 pauseOnHover
                 theme="light"
                 />
-        </div>
-            <CartModal/>
         </>
         
     );

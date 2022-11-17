@@ -17,7 +17,7 @@
         padding: .5rem;
     }
     &__infor > button{
-        background: var(--blue);
+        background: #2ecc71;
         border: none;
         padding: .5rem;
         border-radius: 5px;
@@ -25,4 +25,9 @@
         margin-top: .5rem;
         cursor: pointer;
     }
+    &__infor > button:hover{
+        background-color: orange;
+        transform: translateY(2px);
+    }
+   
 }

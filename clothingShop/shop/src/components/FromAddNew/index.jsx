@@ -77,6 +77,7 @@ function FormAddNew(props) {
             <div className="form__group">
                 <label htmlFor="">Price</label>
                 <InputText 
+                type="number"
                 name="price"
                 value={products.price}
                 onChange={onChangeText}

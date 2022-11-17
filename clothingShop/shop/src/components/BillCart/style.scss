@@ -1,0 +1,47 @@
+.Bill{
+    width: 400px;
+    margin: 1rem auto;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    padding: 1rem;
+    &__title{
+        text-align: center;
+    }
+    
+}
+.group__item{
+    display: flex;
+    margin: 1rem 0;
+    justify-content: space-between;
+}
+.group__item > p:first-child{
+    font-weight: 500;
+
+}
+.curent__price{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+.curent__price p:first-child{
+  font-weight: 500;
+}
+
+.btn__payment{
+    text-align: center;
+    margin-top: 1rem;
+}
+.btn__payment button{
+    width: 100%;
+    padding: .5rem;
+    border-radius: 10px;
+    border: none;
+    background: #0cda90;
+    color: #fff;
+    cursor: pointer;
+}
+.btn__payment button:hover{
+    background-color: orange;
+    transform: translateY(2px);
+}

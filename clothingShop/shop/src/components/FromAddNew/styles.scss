@@ -28,6 +28,7 @@
         text-align: center;
        
     }
+
     &__btn > input{
         margin: .5rem;
         padding: .4rem 1rem;
@@ -36,6 +37,16 @@
         cursor: pointer;
         background-color: var(--blue);
         color: var(--white);
+    }
+    &__btn > input:last-child{
+        background-color: #f0f0f0;
+        color: black;
+    }
+    &__btn > input:hover{
+        background-color: orange;
+    }
+    &__btn > input:active{
+        transform: translateY(2px);
     }
     &__msgError{
         color: var(--red);
