@@ -48,9 +48,9 @@ function CartModal({open,onClose}) {
             }
            
         }else{
-            if(qty === 20){
-                qty= 20;
-                alert("qty not 20")
+            if(qty === 10){
+                qty= 10;
+                toast.error("Hết hàng")
                 return
             }else{
                 qty += 1;

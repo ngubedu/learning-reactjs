@@ -16,6 +16,22 @@ function FormAddNew(props) {
     }
     const [msgErrors, setMsgErrors] = useState({})
     const [products, setProducts] =useState(defaultValues)
+
+    // const fetchData = async () => {
+    //     const response = await productApis.getAll();
+    //     // Check status for post api
+    //     if (response.status === STATUS_CODE.OK) {
+    //         setProducts(response.data);
+    //     } else {
+    //       toast.error('Get list failed.');
+    //       console.log(response.status);
+    //     }
+    //     console.log("data" + response.data);
+    // };
+    // useEffect(() =>{
+    //     fetchData()
+    // },[])
+    console.log(products);
     const onChangeText = (e) =>{
         setProducts((prev) =>({
             ...prev,
@@ -24,9 +40,13 @@ function FormAddNew(props) {
     }
     const validateForm = () =>{ 
           const errors = {};
+        //   const isCheckName = checkTitleAlreadyExist()
           if (!products.name) {
             errors.name = "* name is required"
           }
+        //   if (isCheckName === true) {
+        //     errors.name = "* name Already Exist"
+        //   }
           if (!products.price) {
             errors.price = "* price is required"
           }
@@ -40,6 +60,15 @@ function FormAddNew(props) {
                 return false;
             }
         }
+        // const checkTitleAlreadyExist = () => {
+        //     let newNameData = products.map(newNameData => newNameData.name)
+        //     if (newNameData.includes(products.name)) {
+        //         return true;
+        //     }
+        //     console.log("name:" + newNameData);
+        // }
+        
+      
     let navigate = useNavigate(); 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -57,6 +86,7 @@ function FormAddNew(props) {
         setProducts(products);
     }
     const HandleResetForm =(e) =>{
+        setMsgErrors([])
         setProducts(defaultValues)
     }
     return (

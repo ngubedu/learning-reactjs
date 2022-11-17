@@ -21,25 +21,25 @@
   ],
   "OrderProduct": [
     {
+      "name": "ao new",
+      "price": "2132",
+      "qty": 1,
+      "image": "https://dosi-in.com/images/detailed/42/CDL10_1.jpg",
+      "id": 1
+    },
+    {
       "name": "ao mavel",
       "price": "1000",
+      "qty": 10,
       "image": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/434247/item/goods_00_434247.jpg?width=1600&impolicy=quality_75",
-      "qty": 3,
       "id": 2
     },
     {
       "name": "leehau",
       "price": "12323",
+      "qty": 10,
       "image": "https://cdn.baogiaothong.vn/upload/images/2022-3/article_img/2022-09-26/img-bgt-2021-nguyen-dinh-hoan-vu-18070911-1664191977-width720height480.jpeg",
-      "qty": 3,
       "id": 3
-    },
-    {
-      "name": "ao new",
-      "price": "2132",
-      "image": "https://dosi-in.com/images/detailed/42/CDL10_1.jpg",
-      "qty": 1,
-      "id": 4
     }
   ]
 }

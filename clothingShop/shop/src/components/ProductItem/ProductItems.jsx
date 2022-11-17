@@ -6,7 +6,7 @@ import './index.scss'
 function ProductItems({product}) {
 
     let qty = 1;
-    const addToCart = async(name,price,image) =>{
+    const addToCart = async (name,price,image) =>{
         toast.success("Thêm vào giỏ hàng thành công  " + name)
         let isExisting = false;
       const result = await axios.get("http://localhost:9000/orderproduct")
