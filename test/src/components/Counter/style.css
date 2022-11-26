@@ -1,0 +1,19 @@
+.counter {
+    position: relative;
+    text-align: center;
+}
+
+.counter button {
+    padding: .2rem 1rem;
+    background: yellow;
+}
+
+.counter button:first-child {
+    background-color: green;
+    color: azure;
+}
+
+.counter button:last-child {
+    background-color: red;
+    color: azure;
+}

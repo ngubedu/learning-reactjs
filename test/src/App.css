@@ -1,0 +1,13 @@
+.Nav {
+  text-align: center;
+  margin-top: 1rem;
+
+}
+
+.link__item {
+  margin: .5rem .5rem;
+  text-decoration: none;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  background: #f0f0f0;
+}
