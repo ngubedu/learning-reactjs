@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid'
 import productApis from '../apis/productApis';
 import InputText from '../common/inputText/inputText';
@@ -15,23 +15,26 @@ function FormAddNew(props) {
         image:'',
     }
     const [msgErrors, setMsgErrors] = useState({})
+    const [data, setData] = useState([]);
     const [products, setProducts] =useState(defaultValues)
+    let navigate = useNavigate(); 
 
-    // const fetchData = async () => {
-    //     const response = await productApis.getAll();
-    //     // Check status for post api
-    //     if (response.status === STATUS_CODE.OK) {
-    //         setProducts(response.data);
-    //     } else {
-    //       toast.error('Get list failed.');
-    //       console.log(response.status);
-    //     }
-    //     console.log("data" + response.data);
-    // };
-    // useEffect(() =>{
-    //     fetchData()
-    // },[])
-    console.log(products);
+    const fetchData = async () => {
+        const response = await productApis.getAll();
+        // Check status for post api
+        if (response.status === STATUS_CODE.OK) {
+            setData(response.data);
+        } else {
+          toast.error('Get list failed.');
+          console.log(response.status);
+        }
+        console.log("data" + response.data);
+    };
+  
+    // use useEffect
+    useEffect(() =>{
+        fetchData()
+    },[])
     const onChangeText = (e) =>{
         setProducts((prev) =>({
             ...prev,
@@ -40,13 +43,13 @@ function FormAddNew(props) {
     }
     const validateForm = () =>{ 
           const errors = {};
-        //   const isCheckName = checkTitleAlreadyExist()
+          const isCheckName = checkTitleAlreadyExist()
           if (!products.name) {
             errors.name = "* name is required"
           }
-        //   if (isCheckName === true) {
-        //     errors.name = "* name Already Exist"
-        //   }
+          if (isCheckName === true) {
+            errors.name = "* name Already Exist"
+          }
           if (!products.price) {
             errors.price = "* price is required"
           }
@@ -60,16 +63,12 @@ function FormAddNew(props) {
                 return false;
             }
         }
-        // const checkTitleAlreadyExist = () => {
-        //     let newNameData = products.map(newNameData => newNameData.name)
-        //     if (newNameData.includes(products.name)) {
-        //         return true;
-        //     }
-        //     console.log("name:" + newNameData);
-        // }
-        
-      
-    let navigate = useNavigate(); 
+    const checkTitleAlreadyExist = () => {
+        let newNameData = data.map(newNameData => newNameData.name)
+        if (newNameData.includes(products.name)) {
+            return true;
+        }   
+    }
     const handleSubmit = async (e) =>{
         e.preventDefault();
         const isValid = validateForm();

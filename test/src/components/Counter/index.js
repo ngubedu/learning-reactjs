@@ -5,9 +5,11 @@ function Counter(props) {
   return (
     <div className="counter">
       <h1>{number}</h1>
-      <button onClick={() => setNumber(number + 1)}>+</button>
-      <button onClick={() => setNumber(0)}>reset</button>
-      <button onClick={() => setNumber(number - 1)}>-</button>
+      <div className="btn__click">
+        <button onClick={() => setNumber(number + 1)}>+</button>
+        <button onClick={() => setNumber(0)}>reset</button>
+        <button onClick={() => setNumber(number - 1)}>-</button>
+      </div>
     </div>
   );
 }

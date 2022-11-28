@@ -1,59 +1,33 @@
-import axios from 'axios';
 import React from 'react';
-import { toast } from 'react-toastify';
 import Button from '../common/Button/Button';
+import Image from '../common/image/Images';
+import {DollarUsd } from '../constants';
 import './index.scss'
-function ProductItems({product}) {
 
-    let qty = 1;
-    const addToCart = async (name,price,image) =>{
-        toast.success("Thêm vào giỏ hàng thành công  " + name)
-        let isExisting = false;
-      const result = await axios.get("http://localhost:9000/orderproduct")
-      if (result.data.length === 0) {
-        const order = {name: name , price: price , image: image , qty: qty };
-        axios.post("http://localhost:9000/orderproduct",order)
-      }else{
-        result.data.map((orderProduct) =>{
-          if(name === orderProduct.name){
-            orderProduct.qty += 1;
-            const order = {
-                name: name,
-                price : price,
-                image: image,
-                qty: orderProduct.qty,
-            };
-            axios.put(`http://localhost:9000/orderproduct/${orderProduct.id}`,order)
-            isExisting = true;
-          }
-        })
-        if (isExisting === false) {
-            const  order = {
-                name: name,
-                price: price,
-                image: image,
-                qty:qty,
-            };
-            axios.post("http://localhost:9000/orderproduct" , order) ;
-        }
-      }
+function ProductItems({product,onHandleAdd,handleDelete,}) {
+    const handleAddOrder = async () =>{     
+      onHandleAdd(product.id)
+    }
+    const OnDelete = async(productID) =>{
+        handleDelete(productID)
     }
     return (
         <>
         <div className='card'>
            <div className="card__content">
+            <div className='card__btnClose' onClick={OnDelete}>x</div>
                 <div className='card__img'>
-                    <img 
-                    src={product.image}
-                    alt="" 
-                    />
+                   <Image 
+                   src={product.image}
+                   alt=""
+                   />
                     </div>
                 <div className='card__infor'>
                     <h3>{product.name}</h3>
-                    <p>{product.price} $</p>
+                    <p>{DollarUsd.format(product.price)}</p>
                     <Button 
                     nameBtn={"Add to Card"} 
-                    OnClick ={() =>addToCart(product.name,product.price,product.image)}
+                    OnClick ={handleAddOrder}
                     />
                 </div>     
            </div>

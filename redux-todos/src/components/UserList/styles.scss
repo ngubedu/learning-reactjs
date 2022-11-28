@@ -1,0 +1,38 @@
+.table{
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 100%;
+}
+table{
+    width: 700px;
+    margin: .5rem auto;
+
+   td, th { 
+    padding: 10px;  
+ }
+ td {
+    text-align: center;
+    vertical-align: middle;
+ }
+ td > button{
+   border: none;
+   background: none;
+   cursor: pointer;
+ }
+ th { 
+    background-color: #f0f0f0;
+    font-weight: 500;
+    color: black;
+ }
+}
+.todo__emptyItemCard{
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: red;
+}
+.todo__emptyItem{
+    text-align: center;
+    color: red;
+}

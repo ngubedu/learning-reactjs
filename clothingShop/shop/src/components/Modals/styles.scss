@@ -9,7 +9,7 @@
 }
 .cartContent{
     max-width: 900px;
-    min-height: auto;
+    min-height: 500px;
     position: relative;
     top: 5%;
     bottom: 5%;
@@ -56,6 +56,11 @@ table{
  td {
     text-align: center;
     vertical-align: middle;
+ }
+ td >img{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
  }
  td > button{
    border: none;
@@ -143,4 +148,20 @@ table{
     margin-top: 1rem;
     font-size: 1.5rem;
     color: red;
+}
+.btn__clearCart{
+    text-align: right;
+    margin: .5rem 0;
+}
+.btn__clearCart> button{
+    border: none;
+    background-color: #0cda90;
+    color: #fff;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
+.btn__clearCart> button:hover{
+    background: orange;
+    transform: translateY(2px);
 }

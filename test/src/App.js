@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Counter from "./components/Counter";
+import Food from "./components/Food";
 import Music from "./components/Music";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Counter />} />
         <Route path="/music" element={<Music />} />
+        <Route path="/food" element={<Food />} />
       </Routes>
     </>
   );

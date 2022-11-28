@@ -1,19 +1,31 @@
 .counter {
     position: relative;
+    top: 100px;
+    margin: 0 auto;
+    border: .5px solid black;
+    width: 150px;
     text-align: center;
+    background-color: #f0f0f0;
 }
 
-.counter button {
+.btn__click {
+    display: flex;
+}
+
+.btn__click button {
+    cursor: pointer;
     padding: .2rem 1rem;
     background: yellow;
+    border: none;
+    width: 100%;
 }
 
-.counter button:first-child {
+.btn__click button:first-child {
     background-color: green;
     color: azure;
 }
 
-.counter button:last-child {
+.btn__click button:last-child {
     background-color: red;
     color: azure;
 }

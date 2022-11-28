@@ -36,6 +36,7 @@ const TodoList = (props) => {
     };
     setTodoList(newTodoList)
     localStorage.setItem("todos",JSON.stringify(newTodoList))
+    return newTodoList
   };
 //  update item
 

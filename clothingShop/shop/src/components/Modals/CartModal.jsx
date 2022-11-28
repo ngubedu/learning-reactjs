@@ -1,65 +1,79 @@
-
 import axios from 'axios';
 import React, {  useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '../common/Button/Button';
 import InputText from '../common/inputText/inputText';
-// import {DataContext} from '../Contexts/DataConText'
+import { STATUS_CODE, DollarUsd} from '../constants';
+import orderProductApis from '../apis/orderProductApis';
+import Image from '../common/image/Images';
 import './styles.scss'
 
 function CartModal({open,onClose}) {
-    // const dataContext = useContext(DataContext) 
-
+    
     const [cartItem , setCartItem] = useState([])
     const [currentP, setCurrentP] = useState()
     const [total ,setTotal] = useState()
-     useEffect(() => {
-        fetchData();
-     },[currentP,total])   
+    const [isLoadData, setIsLoadData] = useState(false);
 
-     let currentPrice = 0;
-     let totalPrice = 0;
-     const fetchData = async() =>{
-        const result = await axios.get("http://localhost:9000/orderproduct")
-        setCartItem(result.data)
-        result.data.map((prices) => {
-            currentPrice += (prices.qty * Number(prices.price))
-            totalPrice += (currentPrice + (currentPrice * 10 / 100))
-            return totalPrice
-        });
-        setCurrentP(currentPrice.toFixed(2))
-        setTotal(totalPrice.toFixed(2))
-     }
-     const deleteOrder = async (id) =>{
-        let isDelete = window.confirm("do you want remove item")
-        if (isDelete) {
-            await axios.delete(`http://localhost:9000/orderproduct/${id}`)
-            toast.success("Xóa Khỏi giỏ Hàng thành công")
-            fetchData();
+    let currentPrice = 0;
+    let totalPrice = 0;
+    
+    const fetchData = async() =>{
+       setIsLoadData(true)
+        const response  = await orderProductApis.getAll()
+        // Check status for post api
+        if (response.status === STATUS_CODE.OK) {
+            setCartItem(response.data)
+        }else {
+            alert('Get list failed.');
+            console.log(response.status);
         }
-     }
-     const inDec = async (qty,id,dec,name,price,image) => {
+        response.data.map((prices) => {
+            // số Tiền  chưa thuế
+            currentPrice += (prices.qty * Number(prices.price))
+            return currentPrice
+        });
+        //  Tổng số tiền 
+        totalPrice += (currentPrice + (currentPrice * 10 / 100))
+        setCurrentP(currentPrice)
+        setTotal(totalPrice)
+    }
+    //  delete item ID cart 
+    const deleteOrder = async (orderID) =>{    
+          await orderProductApis.delete(orderID)
+            toast.success("Xóa Khỏi giỏ Hàng thành công")
+            setIsLoadData(false); 
+        }
+    // handle button inDec and inc
+    const inDec = async (qty,id,dec,name,price,image) => {
+        setIsLoadData(false)
         if(dec === "dec"){
-            if(qty===1){
-                qty =1;
-            }else{
-                qty -= 1;
+            qty -= 1;
+            if(qty === 0){
+                qty = 0;
+                deleteOrder(id)
+                return;
             }
-           
         }else{
-            if(qty === 10){
-                qty= 10;
-                toast.error("Hết hàng")
-                return
-            }else{
-                qty += 1;
-            }
+            qty +=1;  
         }
         const order = {name:name, price:price,qty:qty, image: image}
         await axios.put(`http://localhost:9000/orderproduct/${id}`, order)
-        fetchData();
-     }
+    }
+    // handle delete item in cart
+    const handleClearItemCart = async () =>{
+        const order = []
+        setCartItem(order)
+        // await axios.put(`http://localhost:9000/orderproduct/`)
+        toast.success("Xóa Tất cả item trong giỏ hàng thành công")
+        setIsLoadData(true)    
+    }
+    //  use useEffect
+    useEffect(() => {
+       fetchData();
+    },[currentP,total,isLoadData])   
+
     if(!open) return null;
     return (
        <>
@@ -69,80 +83,87 @@ function CartModal({open,onClose}) {
                     <p>Shop </p>
                     <Button nameBtn={"X"}  OnClick={onClose}/>
                 </div>
+                {cartItem.length === 0 && <div className="todo__emptyItemCard"><p>Giỏ hàng is Empty</p></div>}
+               {
+                cartItem.length> 0 &&
                 <div className='cartContent__main'>
-                    <div className='table'>
-                        <table cellspacing="0">
-                           <tr>
+                <div className='table'>
+                    <table>
+                       <thead>
+                        <tr>
                                 <th>Hình ảnh</th>
                                 <th>Tên</th>
                                 <th>Số lượng</th>
                                 <th>Số Tiền</th>
                                 <th >Tác vụ</th>
-                           </tr>
-                           <tbody className='tbl_data'>
-                           {cartItem.map((item, index) => (
-                                 <tr  key ={index}>
-                                      <td><img className='img__cart' src={item.image} alt="" /></td>
-                                      <td>{item.name}</td>
-                                      <td className='qty'>
-                                          <Button nameBtn={"-"}
-                                          OnClick={() =>
-                                                inDec(item.qty, item.id,"dec", item.name,item.price,item.image)
-                                        }
-                                          />
-                                          <InputText type={"number"} value={item.qty} disabled/>
-                                          <Button nameBtn={"+"}
-                                          OnClick={() =>
-                                            inDec(item.qty, item.id,"inc", item.name,item.price,item.image)
+                        </tr>
+                       </thead>
+                       {cartItem.map((item, index) => (
+                       <tbody className='tbl_data'  key ={index}>
+                             <tr>
+                                  <td><Image className='img__cart' src={item.image} alt=""/></td>
+                               
+                                  <td>{item.name}</td>
+                                  <td className='qty'>
+                                      <Button nameBtn={"-"}
+                                      OnClick={() =>
+                                            inDec(item.qty, item.id,"dec", item.name,item.price,item.image)
                                     }
-                                          />
-                                      </td>
-                                      <td>{(item.qty * Number(item.price)).toFixed(2)} $</td>
-                                      <td> 
-                                          <Button  nameBtn={<i className="fa-solid fa-trash-can"></i>} OnClick={() => deleteOrder(item.id)}/>
-                                      </td>
-                                  </tr>                          
-                           ))}
-                           </tbody>
-                        </table>
-                        {cartItem.length === 0 &&<div className="todo__emptyItemCard"><p>Giỏ hàng is Empty</p></div>}
-                    </div>
-                        <div className='cart__bottom'>
-                            <div className='payment__config'>
-                                <div className="payment__config--title">
-                                    <p>Phương Thức Vận Chuyển</p>
-                                </div>
-                                <div className='payment__config--content'>
-                                    <InputText type={"radio"} disabled/>
-                                    <label htmlFor="">Cod</label>
-                                </div>
+                                      />
+                                      <InputText type={"number"} value={item.qty} disabled/>
+                                      <Button nameBtn={"+"}
+                                      OnClick={() =>
+                                        inDec(item.qty, item.id,"inc", item.name,item.price,item.image)
+                                }
+                                      />
+                                  </td>
+                                  <td>{DollarUsd.format(item.qty * Number(item.price))}</td>
+                                  <td> 
+                                      <Button  nameBtn={<i className="fa-solid fa-trash-can"></i>} OnClick={() => deleteOrder(item.id)}/>
+                                  </td>
+                              </tr>                          
+                       </tbody>
+                       ))}
+                    </table>
+                    {cartItem.length > 0 && <div className="btn__clearCart"><Button OnClick={() =>handleClearItemCart()} nameBtn={"Clear Cart"}/></div>}           
+                </div>
+                    <div className='cart__bottom'>
+                        <div className='payment__config'>
+                            <div className="payment__config--title">
+                                <p>Phương Thức Vận Chuyển</p>
                             </div>
-                            <div className='orderSummary'>
-                                <div className="payment__config--title">
-                                    <p>Order Summary</p>
+                            <div className='payment__config--content'>
+                                <InputText type={"radio"} disabled/>
+                                <label htmlFor="">Cod</label>
+                            </div>
+                        </div>
+                        <div className='orderSummary'>
+                            <div className="payment__config--title">
+                                <p>Order Summary</p>
+                            </div>
+                            <div className='orderSummary__content'>
+                            <div className='group'>
+                                    <p>Tiền Chưa thuế</p> 
+                                    <p>{DollarUsd.format(currentP)} </p>
                                 </div>
-                                <div className='orderSummary__content'>
                                 <div className='group'>
-                                        <p>Tiền Chưa thuế</p> 
-                                        <p>{currentP} $</p>
-                                    </div>
-                                    <div className='group'>
-                                        <p>Thuế:</p> 
-                                        <p>10%</p>
-                                    </div>
-                                    <div className='group'>
-                                        <p>Tổng Tiền:</p> 
-                                        <p>{total} $</p>
-                                    </div>
-                                    <div className='btn__order'>
-                                       <Link to={"/bill-cart"}>
-                                            <Button nameBtn={"Thanh toán"} OnClick={onClose}/>
-                                       </Link>
-                                    </div>
+                                    <p>Thuế:</p> 
+                                    <p>10%</p>
+                                </div>
+                                <div className='group'>
+                                    <p>Tổng Tiền:</p> 
+                                    <p>{DollarUsd.format(total)} </p>
+                                </div>
+                                <div className='btn__order'>
+                                   <Link to={"/bill-cart"}>
+                                        <Button nameBtn={"Thanh toán"} OnClick={onClose}/>
+                                   </Link>
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
+            </div>
+               }
             </div>
         </div>
    

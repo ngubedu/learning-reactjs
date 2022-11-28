@@ -17,13 +17,14 @@ const TodoItem = ({removeTodoItem,idx,onHandleChange,todo,id}) => {
           setNewStatus(Status.DONE);
           setTextColor(COLOR.colorDone)
           break;
-          default:
+          case Status.DONE:
             setNewStatus(Status.NEW) 
             setTextColor(COLOR.colorNew);
-            break;
+            break
+          default:
+          throw new Error("error")
           }  
-      onHandleChange(newStatus, textColor,idx)
-      console.log(id)
+          onHandleChange(newStatus, textColor,idx)
   }
   // **********************
   const handleDeleteItem =()=>{

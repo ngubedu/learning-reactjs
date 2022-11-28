@@ -16,6 +16,15 @@ const productApis = {
       console.log(error);
     }
   },
+  delete: async (productID) => {
+    try {
+      const response = await axiosClient.delete(`/products/${productID}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      alert("Cannot connect to API.");
+    }
+  },
 };
 
 export default productApis;

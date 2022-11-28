@@ -4,3 +4,7 @@ export const STATUS_CODE = {
   NOT_AUTH: 401,
   FORBIDDEN: 404,
 };
+export const DollarUsd = new Intl.NumberFormat("en-Us", {
+  style: "currency",
+  currency: "USD",
+});

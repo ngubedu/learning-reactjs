@@ -1,5 +1,10 @@
-const initialState = {
-  count: 0,
-};
+import { configureStore } from "@reduxjs/toolkit";
+import { foodsListSlice } from "../components/Food/FoodList/FoodsSlice";
 
-const store = createStore(reducer, initialState, compose);
+const store = configureStore({
+  reducer: {
+    todoList: foodsListSlice.reducer,
+  },
+});
+
+export default store;
