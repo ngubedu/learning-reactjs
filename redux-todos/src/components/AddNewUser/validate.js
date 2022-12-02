@@ -1,6 +1,6 @@
 export const validate = (values) => {
   const errors = {};
-  let phoneno = /^\d{10}$/i;
+  const phoneno = /^\d{10}$/i;
   if (!values.name) {
     errors.name = "* name is Required";
   }

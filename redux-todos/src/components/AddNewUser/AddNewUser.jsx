@@ -2,35 +2,41 @@ import React from 'react';
 import Label from '../common/Label';
 import InputText from '../common/InputText';
 import { useFormik } from 'formik';
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 import { validate } from './validate';
 import "./style.scss"
-// import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { usersListSlice } from '../UserList/UsersSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewUser } from '../UserList/UsersSlice';
 
 function AddNewUser(props) {
-  
+   useSelector((state) => state.userList.users);
     const dispatch = useDispatch();
     //  handle onsubmit
     const onSubmit = (values) =>{
         dispatch(
-            usersListSlice.actions.addUser(values)
+            addNewUser({
+                id: uuidv4(),
+                name: values.name,
+                address:values.address,
+                date: new Date().toLocaleString(),
+                phone:values.phone,
+            })
         )
         resetForm()
     }
     // formik
     const {values,handleChange,handleBlur,handleSubmit,errors,touched,resetForm} = useFormik({
-        initialValues: {
+        initialValues:{
             id: uuidv4(),
             name: "",
             address:"",
+            date: new Date().toLocaleString(),
             phone: '',
         },
         validate,
         onSubmit,
     })
-   console.log(values);
+    
     return (
         <div className='form'>
             <form action="" onSubmit={handleSubmit} >

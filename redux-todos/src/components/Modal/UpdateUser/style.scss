@@ -1,0 +1,41 @@
+.modal{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+
+    &__content{
+    max-width: 400px;
+    min-height: auto;
+    position: relative;
+    top: 5%;
+    bottom: 5%;
+    margin: 0 auto;
+    padding: .5rem;
+    background: #fff;
+    border-radius: 5px;
+    }
+    &__title{
+        text-align: center;
+    }
+    &__title > p{
+        font-weight: 500;
+        text-transform: uppercase;
+        text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    &__title > button{
+        position: absolute;
+        top: 4px;
+        right: 5px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+}
+.form__update{
+    padding: 1rem;
+}
